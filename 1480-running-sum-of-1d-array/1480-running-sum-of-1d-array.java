@@ -4,11 +4,8 @@ class Solution {
         int sum = 0;
 
         for(int i=0; i<nums.length; i++){
-            for(int j=0; j<i+1; j++){
-                sum += nums[j];
-            }
+            sum += nums[i];
             ans[i] = sum;
-            sum = 0;
         }
 
         return ans;
