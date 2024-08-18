@@ -7,20 +7,6 @@ class Solution:
                 if letter not in hm[i]:
                     hm[i][letter] = 0
                 hm[i][letter] += 1
-        
-        '''
-        {0: {7}, 1: {13}, 
-        2: {'t': 1, 'a': 1, 'n': 1}, 3: {16}, 
-        4: {'n': 1, 'a': 1, 't': 1}, 5: {'b': 1, 'a': 1, 't': 1}}
-
-        curr = [] -> curr = [eat]
-        hm[0]==hm[j] --> curr = [eat, tea]
-        hm[0] = {14} j+=1
-        hm[0] == hm[3] --> curr = [eat, tea, ate]
-        hm[3] = {16}
-        hm[0] = {7}
-        
-        '''
 
         ans = []
         for i in range(len(strs)):
