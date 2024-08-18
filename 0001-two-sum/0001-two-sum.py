@@ -4,11 +4,7 @@ class Solution:
 
         for i in range(len(nums)):
             diff = target - nums[i]
-
             if diff in hm:
-                return i, hm[diff]
+                return [i, hm[diff]]
             
-            else:
-                hm[nums[i]] = i
-        
-        
+            hm[nums[i]] = i
