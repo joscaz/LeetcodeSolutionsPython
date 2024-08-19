@@ -6,9 +6,7 @@ class Solution:
             if num not in hm:
                 hm[num] = 0
             hm[num] += 1
-
-        '''{1:3, 2:2, 3:1}'''
-
+            
         bucket = {i: [] for i in range(len(nums)+1)}
 
         for i, v in hm.items():
