@@ -1,13 +1,17 @@
 class Solution:
     def isValid(self, s: str) -> bool:
+        symb = {'(':')', '[':']', '{':'}'}
         stack = []
-        symbols = {'[':']', '{':'}', '(':')'}
 
-        for bracket in s:
-            if bracket in symbols:
-                stack.append(bracket)
-            
-            elif len(stack) == 0 or bracket != symbols[stack.pop()]:
+
+        for c in s:
+            if c in symb:
+                stack.append(c)
+            elif stack and c == symb[stack.pop()]:
+                continue
+            else:
                 return False
- 
-        return len(stack) == 0
+        
+        if stack:
+            return False
+        return True
