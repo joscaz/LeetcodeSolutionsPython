@@ -1,6 +1,6 @@
 class Solution:
     def construct2DArray(self, original: List[int], m: int, n: int) -> List[List[int]]:
-        if len(original) > (m * n) or len(original) < (m*n): # 1 > 2? NO
+        if len(original) != (m*n):
             return []
         ans = []
         curr = []
