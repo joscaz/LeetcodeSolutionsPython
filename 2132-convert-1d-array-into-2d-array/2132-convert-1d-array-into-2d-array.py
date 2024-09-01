@@ -3,18 +3,8 @@ class Solution:
         if len(original) != (m*n):
             return []
         ans = []
-        curr = []
-        i, j = 0, 0
-        idx_original = 0
-        
-        while i < m:
-            curr = []
-            while j < n:
-                curr.append(original[idx_original])
-                idx_original += 1
-                j += 1
-            j = 0
-            i += 1
-            ans.append(curr)
 
+        for i in range(0, len(original), n):
+            ans.append(original[i:i+n])
+        
         return ans
