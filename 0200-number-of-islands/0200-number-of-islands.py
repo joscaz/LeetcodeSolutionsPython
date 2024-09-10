@@ -2,7 +2,7 @@ class Solution:
     def numIslands(self, grid: List[List[str]]) -> int:
         ROWS = len(grid)
         COLS = len(grid[0])
-        islands = []
+        islands = 0
         visited = set()
 
         def dfs(row, col):
@@ -11,10 +11,11 @@ class Solution:
             
             visited.add((row, col))
 
-            return (1 + dfs(row+1, col) + dfs(row-1, col) + dfs(row, col+1) + dfs(row, col-1))
+            return (dfs(row+1, col) + dfs(row-1, col) + dfs(row, col+1) + dfs(row, col-1))
         
         for i in range(ROWS):
             for j in range(COLS):
                 if (i, j) not in visited and grid[i][j] == '1':
-                    islands.append(dfs(i,j))
-        return len(islands)
+                    islands += 1
+                    dfs(i, j)
+        return islands
