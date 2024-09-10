@@ -17,5 +17,4 @@ class Solution:
             for j in range(COLS):
                 if (i, j) not in visited and grid[i][j] == '1':
                     islands.append(dfs(i,j))
-        print(islands)
         return len(islands)
