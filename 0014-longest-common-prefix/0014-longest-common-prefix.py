@@ -10,9 +10,3 @@ class Solution:
             prefix += strs[0][i]
 
         return prefix
-
-        '''
-        i = 0 = f
-            j = 1
-                if i == 
-        '''
