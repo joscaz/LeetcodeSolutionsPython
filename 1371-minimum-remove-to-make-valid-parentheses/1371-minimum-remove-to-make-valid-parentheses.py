@@ -1,15 +1,5 @@
 class Solution:
     def minRemoveToMakeValid(self, s: str) -> str:
-        '''
-        lee(t(c)o)de)
-        count = 0   ans = ""
-        -------------
-        count = 2
-        -------------
-        -------------
-        -------------
-        -------------
-        '''
         ans = []
         count = 0
 
