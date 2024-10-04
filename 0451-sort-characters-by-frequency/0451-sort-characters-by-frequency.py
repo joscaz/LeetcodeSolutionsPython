@@ -5,6 +5,7 @@ class Solution:
         res = []
 
         for c in s:
+            # can be written as hm[c] = 1 + hm.get(c, 0)
             if c not in hm:
                 hm[c] = 0
             hm[c] += 1
