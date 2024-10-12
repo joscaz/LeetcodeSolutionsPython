@@ -10,14 +10,14 @@ class RandomizedSet:
         return False
 
     def remove(self, val: int) -> bool:
-        if val in self.s:
-            self.s.remove(val)
-            return True
-        return False
+        if val not in self.s:
+            return False
+        self.s.remove(val)
+        return True
 
     def getRandom(self) -> int:
-        self.toList = list(self.s)
-        return random.choice(self.toList)
+        tmp = list(self.s)
+        return random.choice(tmp)
 
 
 # Your RandomizedSet object will be instantiated and called as such:
