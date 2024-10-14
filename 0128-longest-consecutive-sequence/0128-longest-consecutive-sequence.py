@@ -12,6 +12,6 @@ class Solution:
                     curr_streak += 1
                     curr_num += 1
                 
-                longest = max(longest, curr_streak)
+                longest = max(curr_streak, longest)
         
         return longest
