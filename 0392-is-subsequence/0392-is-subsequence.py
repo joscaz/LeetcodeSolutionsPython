@@ -6,8 +6,6 @@ class Solution:
         while sptr < len(s) and tptr < len(t):
             if s[sptr] == t[tptr]:
                 sptr += 1
-                tptr += 1
-            else:
-                tptr += 1
+            tptr += 1
         
-        return False if sptr < len(s) else True
+        return sptr == len(s)
