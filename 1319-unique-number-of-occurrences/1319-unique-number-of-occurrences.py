@@ -7,10 +7,4 @@ class Solution:
                 hm[num] = 0
             hm[num] += 1
 
-        seen = set()
-
-        for count in hm.values():
-            if count in seen:
-                return False
-            seen.add(count)
-        return True
+        return len(hm) == len(set(hm.values()))
