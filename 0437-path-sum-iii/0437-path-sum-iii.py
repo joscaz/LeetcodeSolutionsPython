@@ -6,18 +6,20 @@
 #         self.right = right
 class Solution:
     def pathSum(self, root: Optional[TreeNode], targetSum: int) -> int:
-        def dfs(root, target):
-            if not root:
-                return 0
-            path_count = 1 if root.val == target else 0
-            path_count += dfs(root.left, target - root.val)
-            path_count += dfs(root.right, target - root.val)
+        def dfs(root, cur_sum):
+            if not root: return 0
+            cur_sum += root.val
+
+            path_count = prefix_sum[cur_sum - targetSum]
+            prefix_sum[cur_sum] += 1
+
+            path_count += dfs(root.left, cur_sum)
+            path_count += dfs(root.right, cur_sum)
+
+            prefix_sum[cur_sum] -= 1
 
             return path_count
         
-        if not root:
-            return 0
-        
-        return (dfs(root, targetSum)+
-            self.pathSum(root.left, targetSum) +
-            self.pathSum(root.right, targetSum))
+        prefix_sum = defaultdict(int)
+        prefix_sum[0] = 1
+        return dfs(root, 0)
