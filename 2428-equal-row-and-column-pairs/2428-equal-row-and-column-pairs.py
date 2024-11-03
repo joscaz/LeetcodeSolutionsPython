@@ -14,10 +14,10 @@ class Solution:
 
         total = 0
 
-        for i in range(len(grid)):
+        for row in range(len(grid)):
             cur_col = []
-            for j in range(len(grid)):
-                cur_col.append(grid[j][i])
+            for col in range(len(grid)):
+                cur_col.append(grid[col][row])
             
             if tuple(cur_col) in hm:
                 total += hm[tuple(cur_col)]
