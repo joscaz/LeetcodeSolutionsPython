@@ -8,7 +8,7 @@ class Solution:
     def maxLevelSum(self, root: Optional[TreeNode]) -> int:
         q = deque([root])
         level = 1
-        max_sum = float("-inf")
+        max_sum = float("-inf") # there may be nodes with value < 0
         min_level = 1
 
         while q:
