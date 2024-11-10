@@ -5,20 +5,25 @@
 #         self.next = next
 class Solution:
     def isPalindrome(self, head: Optional[ListNode]) -> bool:
-        copy = []
-        curr = head
-        i, j = 0, 0
+        # we can apply slow and fast ptr approach, then reverse from slow
+        slow = fast = head
 
-        while curr:
-            copy.append(curr.val)
-            curr = curr.next
-            j += 1
-        j-=1
-
-        while i <= j:
-            if copy[i] != copy[j]:
-                return False
-            i += 1
-            j -= 1
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
         
-        return True
+        # reverse 2nd half
+        prev = None
+        cur = slow
+        while cur:
+            tmp = cur.next
+            cur.next = prev
+            prev = cur
+            cur = tmp
+        
+        while head and prev:
+            if head.val != prev.val:
+                return False
+            head = head.next
+            prev = prev.next
+        return True 
