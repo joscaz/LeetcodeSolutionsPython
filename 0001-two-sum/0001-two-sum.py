@@ -3,7 +3,9 @@ class Solution:
         hm = {}
 
         for i in range(len(nums)):
-            diff = target-nums[i]
+            diff = target - nums[i]
+
             if diff in hm:
-                return [i, hm[diff]]
+                return [hm[diff], i]
+
             hm[nums[i]] = i
