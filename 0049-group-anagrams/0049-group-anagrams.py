@@ -1,6 +1,6 @@
 class Solution:
     def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
-        res = defaultdict(list)
+        hm = defaultdict(list)
 
         for word in strs:
             count = [0] * 26
@@ -8,6 +8,5 @@ class Solution:
             for c in word:
                 count[ord(c) - ord('a')] += 1
             
-            res[tuple(count)].append(word)
-        
-        return res.values()
+            hm[tuple(count)].append(word)
+        return list(hm.values())
