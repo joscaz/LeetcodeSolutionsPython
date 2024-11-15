@@ -1,27 +1,20 @@
 class Solution:
     def topKFrequent(self, nums: List[int], k: int) -> List[int]:
-        # bucket sort
-        # +1 because there may be an element with the maximum frequency (len(nums)+1)
-        freq = [ [] for i in range(len(nums) + 1)] 
+        # solution can be using heap or bucket sort
 
-        # count occurrences
         count = {}
+
         for num in nums:
             if num not in count:
-                count[num] = 0 # initialize key
+                count[num] = 0
             count[num] += 1
         
-        # add to bucket
-        for i, v in count.items():
-            freq[v].append(i)
-        
-        # iterate through bucket starting from end
-        # the end contains the most freq elements
+        min_heap = []
 
-        res = [] # array with top k frq elements
-        for i in range(len(nums), 0, -1):
-            for elem in freq[i]:
-                res.append(elem)
-                k -= 1
-                if k == 0:
-                    return res
+        for num, freq in count.items():
+            heappush(min_heap, (freq, num))
+
+            if len(min_heap) > k:
+                heappop(min_heap) # remove smallest frequency
+        
+        return [elem[1] for elem in min_heap]
