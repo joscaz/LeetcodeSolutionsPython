@@ -1,33 +1,31 @@
 class Solution:
     def threeSum(self, nums: List[int]) -> List[List[int]]:
-        ans = []
+        # sorting the array will make it easier
+        # be aware of duplicates
         nums.sort()
         '''
-        [-4,-1,-1,0,1,2]
-
-        i = 0
-          low = 1
-          high = 5
-          curVal = 
+        [-4, -1, -1, 0, 1, 2]
         '''
+        ans = []
+
         for i in range(len(nums)-2):
             if i > 0 and nums[i] == nums[i-1]:
                 continue
-            low, high = i+1, len(nums)-1
-            curVal = nums[i]
-            while low < high:
-                operation = curVal + nums[low] + nums[high]
-                curTriplet = [nums[i], nums[low], nums[high]]
-                if operation == 0:
-                    ans.append(curTriplet)
-                    while low < high and nums[low] == nums[low+1]:
-                        low += 1
-                    while low < high and nums[high] == nums[high-1]:
-                        high -= 1
-                    low += 1
-                    high -= 1
-                elif operation > 0:
-                    high -= 1
+            j = i + 1
+            k = len(nums)-1
+            while j < k:
+                cur_triplet = [nums[i], nums[j], nums[k]]
+                op = nums[i] + nums[j] + nums[k]
+                if op == 0:
+                    ans.append(cur_triplet)
+                    while j < k and nums[j] == nums[j+1]:
+                        j += 1
+                    while j < k and nums[k] == nums[k-1]:
+                        k -= 1
+                    j += 1
+                    k -= 1
+                elif op > 0:
+                    k -= 1
                 else:
-                    low += 1
+                    j += 1
         return ans
