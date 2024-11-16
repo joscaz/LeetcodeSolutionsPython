@@ -1,17 +1,14 @@
 class Solution:
     def isValid(self, s: str) -> bool:
-        symbols = {'(':')', '[':']', '{':'}'}
-        stack = deque()
-        
+        par = {'{':'}', '(':')', '[':']'}
+        stack = []
+
         for c in s:
-            if c in symbols:
-                stack.appendleft(c)
-            elif stack and c == symbols[stack.popleft()]:
+            if c in par:
+                stack.append(c)
+            elif stack and par[stack.pop()] == c:
                 continue
             else:
                 return False
+        
         return True if not stack else False
-        '''
-        stack = (
-        symbols[]
-        '''
