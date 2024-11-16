@@ -1,38 +1,28 @@
 class Solution:
     def evalRPN(self, tokens: List[str]) -> int:
         stack = []
-        ops = ('+', '-', '*', '/')
+        symbols = {'+', '/', '-', '*'}
 
         for c in tokens:
-            if c in ops:
-                self.mathOperation(stack, c)
-            else:
+            if c not in symbols:
                 stack.append(c)
-        
-        return int(stack[-1])
-
-    
-    def mathOperation(self, stack, ch):
-        res = 0
-        if ch == '+':
-            res = int(stack[-2]) + int(stack[-1])
-            stack.pop()
-            stack.pop()
-        elif ch == '-':
-            res = int(stack[-2]) - int(stack[-1])
-            stack.pop()
-            stack.pop()
-        elif ch == '*':
-            res = int(stack[-2]) * int(stack[-1])
-            stack.pop()
-            stack.pop()
-        elif ch == '/':
-            if stack[-1] == '0' or stack[-1] == 0:
-                res = 0
             else:
-                res = int(stack[-2]) / int(stack[-1])
-                if res >= 0 and res < 1:
-                    res = 0
-            stack.pop()
-            stack.pop()
-        stack.append(res)
+                num1 = int(stack.pop())
+                num2 = int(stack.pop())
+                res = self.mathOperation(c, num1, num2)
+                stack.append(str(res))
+
+        return int(stack[-1])
+    
+    def mathOperation(self, operation, num1, num2):
+        res = 0
+        if operation == "/":
+            res = int(num2 / num1)
+        elif operation == "+":
+            res = num2 + num1
+        elif operation == "-":
+            res = num2 - num1
+        elif operation == "*":
+            res = num2 * num1
+        
+        return res
