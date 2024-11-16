@@ -1,24 +1,24 @@
 class Solution:
     def generateParenthesis(self, n: int) -> List[str]:
-        # add open parentheses only if open < n
-        # add closing parentheses only if close < open
-        # valid if open == closed == n
+        # Three conditions
+        # 1. if open == closed == n return
+        # 2. if open parentheses < n add open par
+        # 3. if close parentheses < open add closing par
 
         stack = []
         res = []
 
-        def backtrack(openN, closedN):
-            if openN == closedN == n:
+        def backtrack(openN, closeN):
+            if openN == closeN == n:
                 res.append("".join(stack))
-                return 
+                return
             if openN < n:
                 stack.append('(')
-                backtrack(openN + 1, closedN)
+                backtrack(openN+1, closeN)
                 stack.pop()
-            if closedN < openN:
+            if closeN < openN:
                 stack.append(')')
-                backtrack(openN, closedN+1)
+                backtrack(openN, closeN+1)
                 stack.pop()
-        
         backtrack(0,0)
         return res
