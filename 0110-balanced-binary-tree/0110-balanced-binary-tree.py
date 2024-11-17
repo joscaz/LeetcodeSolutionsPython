@@ -7,16 +7,20 @@
 class Solution:
     def isBalanced(self, root: Optional[TreeNode]) -> bool:
         self.balanced = True
-        def dfs(root):
-            if not root: return 0
 
-            left_height = dfs(root.left)
-            right_height = dfs(root.right)
+        # calculate height of subtrees
+        def height(node):
+            if not node: return 0
 
-            if abs(left_height - right_height) > 1:
+            left = height(node.left)
+            right = height(node.right)
+
+            if abs(left - right) > 1:
                 self.balanced = False
                 return 0
             
-            return 1 + max(left_height, right_height)
-        dfs(root)
+            # return height
+            return 1 + max(left, right)
+        
+        height(root)
         return self.balanced
