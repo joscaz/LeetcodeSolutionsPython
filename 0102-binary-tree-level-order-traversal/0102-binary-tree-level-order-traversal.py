@@ -11,9 +11,9 @@ class Solution:
         ans = []
 
         while q:
+            q_len = len(q)
             cur_level = []
-            level_length = len(q)
-            for _ in range(level_length):
+            for i in range(q_len):
                 node = q.popleft()
                 cur_level.append(node.val)
                 if node.left:
