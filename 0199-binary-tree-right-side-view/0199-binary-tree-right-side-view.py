@@ -7,15 +7,14 @@
 class Solution:
     def rightSideView(self, root: Optional[TreeNode]) -> List[int]:
         if not root: return []
-
         q = deque([root])
         ans = []
 
         while q:
-            lev_len = len(q)
-            for i in range(lev_len):
+            q_len = len(q)
+            for i in range(q_len):
                 node = q.popleft()
-                if i == (lev_len-1):
+                if i == (q_len - 1):
                     ans.append(node.val)
                 if node.left:
                     q.append(node.left)
