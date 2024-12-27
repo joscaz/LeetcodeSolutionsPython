@@ -7,5 +7,5 @@ class Solution:
 
             if diff in hm:
                 return [hm[diff], i]
-
+            
             hm[nums[i]] = i
