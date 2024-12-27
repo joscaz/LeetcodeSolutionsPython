@@ -15,4 +15,4 @@ class Solution:
                 hm2[t[i]] = 0
             hm2[t[i]] += 1
         
-        return hm1 == hm2
+        return hm2 == hm1
